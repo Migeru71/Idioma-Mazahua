@@ -1,12 +1,96 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Idioma Mazahua</title>
-        <link rel="stylesheet" href="styles.css">
-    </head>
-    <body>
-        <h1>Idioma Mazahua</h1>
-    </body>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mazahua WEB</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+
+    <header class="main-header">
+        <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menú">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <a href="/perfil" class="perfil-link" aria-label="Ver perfil">
+            <i class="fa-solid fa-user"></i>
+        </a>
+    </header>
+
+    <nav id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <span class="logo">Jñatrjo Jñatjo</span>
+            <button id="menu-close" aria-label="Cerrar menú">&times;</button>
+        </div>
+        <ul class="sidebar-nav">
+            <li><a href="#"><i class="fa-solid fa-house"></i> Inicio</a></li>
+            <li><a href="#"><i class="fa-solid fa-user"></i> Perfil</a></li>
+            <li><a href="#"><i class="fa-solid fa-palette"></i> Artesanías</a></li>
+            <li><a href="#"><i class="fa-solid fa-utensils"></i> Gastronomía</a></li>
+            <li><a href="#"><i class="fa-solid fa-book-open"></i> Lengua Mazahua</a></li>
+        </ul>
+    </nav>
+    <div id="overlay" class="overlay"></div>
+
+    <main class="container">
+        
+        <section class="carrusel-container">
+            <h2>Practicas Mazahua</h2>
+
+            <div class="carrusel">
+                <div class="carrusel-slides">
+                    <a href="/artesanias.html" class="carrusel-slide is-active">
+                        <img src="https://tse3.mm.bing.net/th/id/OIP.pShTLzEOXm8EbaD-8yQy5gHaDg?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Textiles y bordados mazahuas">
+                    </a>
+                    <a href="/gastronomia.html" class="carrusel-slide">
+                        <img src="https://hablemosdeculturas.com/wp-content/uploads/2018/11/mazahuas-4-1.jpg" alt="Gastronomía tradicional mazahua">
+                    </a>
+                    <a href="/leyendas.html" class="carrusel-slide">
+                        <img src="https://3.bp.blogspot.com/-GpVvLL5EpPU/W7KLzKc4SKI/AAAAAAAAAAM/VVM5zEZpMXoBqs0mJROJXrHyfYb3uTn9QCLcBGAs/s1600/mazahua.jpg" alt="Mitos y leyendas mazahuas">
+                    </a>
+                    <a href="/leyendas.html" class="carrusel-slide">
+                        <img src="https://pbs.twimg.com/media/EE7ZfrEXoAEZG-w.jpg:large" alt="Canciones">
+                    </a>
+                </div>
+
+                <div class="carrusel-dots">
+                    <button class="carrusel-dot is-active" aria-label="Ir a diapositiva 1"></button>
+                    <button class="carrusel-dot" aria-label="Ir a diapositiva 2"></button>
+                    <button class="carrusel-dot" aria-label="Ir a diapositiva 3"></button>
+                    <button class="carrusel-dot" aria-label="Ir a diapositiva 4"></button>
+                </div>
+            </div>
+        </section>
+
+        <section class="actividades-grid">
+            <article class="card">
+                <div class="card-content">
+                    <h3>Práctica de Canciones</h3>
+                    <p>Aprende y canta canciones tradicionales en lengua mazahua para conectar con nuestras raíces.</p>
+                    <a href="#" class="btn">Comenzar</a>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-content">
+                    <h3>Escuchar Cuentos</h3>
+                    <p>Sumérgete en el mundo mágico de los cuentos y relatos narrados por nuestros abuelos.</p>
+                    <a href="#" class="btn">Escuchar</a>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-content">
+                    <h3>Escuchar Leyendas</h3>
+                    <p>Descubre las historias ancestrales de la creación, la naturaleza y nuestros espíritus protectores.</p>
+                    <a href="#" class="btn">Descubrir</a>
+                </div>
+            </article>
+        </section>
+
+    </main>
+
+</body>
 </html>
