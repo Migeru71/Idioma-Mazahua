@@ -1,24 +1,21 @@
 /* ======================================================
-   Hoja de Estilo Unificada - Proyecto Cultura Mazahua
+   Hoja de Estilo Unificada - Proyecto Idioma Mazahua
    ====================================================== */
 
-/* 1. Importación de Fuentes de Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Montserrat:wght@400;500&display=swap');
 
-/* 2. Variables CSS (Paleta de Colores y Tipografía) */
 :root {
-    --color-primario: #B85042;   /* Rojo ocre / Terracota */
-    --color-secundario: #A7998B; /* Gris pardo / Tono de piedra */
-    --color-acento: #E7E8D1;     /* Crema / Manta cruda */
-    --color-fondo: #F4F1DE;     /* Un blanco cálido, más natural */
-    --color-texto: #3E363F;     /* Gris oscuro, casi negro */
-    --color-enlace: #547980;    /* Un azul verdoso sutil */
+    --color-primario: #B85042;  
+    --color-secundario: #A7998B; 
+    --color-acento: #E7E8D1;    
+    --color-fondo: #F4F1DE;     
+    --color-texto: #3E363F;     
+    --color-enlace: #547980;    
 
     --fuente-titulos: 'Lora', serif;
     --fuente-cuerpo: 'Montserrat', sans-serif;
 }
 
-/* 3. Estilos Globales y Reseteo Básico */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -36,7 +33,6 @@ body {
     line-height: 1.7;
 }
 
-/* 4. Layout Principal y Contenedores */
 .container {
     width: 90%;
     max-width: 1200px;
@@ -60,11 +56,10 @@ main {
     z-index: 100;
 }
 
-/* 5. Navegación (Barra Lateral Retráctil) */
 .sidebar {
     position: fixed;
     top: 0;
-    left: -300px; /* Inicia oculta */
+    left: -300px;
     width: 300px;
     height: 100%;
     background-color: var(--color-texto);
@@ -75,7 +70,7 @@ main {
 }
 
 .sidebar.is-open {
-    left: 0; /* Muestra la barra */
+    left: 0; 
 }
 
 .sidebar-header {
@@ -116,7 +111,7 @@ main {
 }
 
 .sidebar-nav li a:hover {
-    background-color: rgba(184, 80, 66, 0.8); /* Primario con transparencia */
+    background-color: rgba(184, 80, 66, 0.8); 
 }
 
 .overlay {
@@ -158,8 +153,6 @@ a {
     font-weight: 500;
 }
 
-/* 7. Componentes */
-
 /* --- Botones --- */
 .menu-toggle, .perfil-link {
     background: none;
@@ -186,18 +179,16 @@ a {
     transform: translateY(-2px);
 }
 
-/* --- Carrusel (Estático) --- */
+/* --- Carrusel --- */
 .carrusel {
-    position: relative; /* Muy importante: el contenedor es relativo */
+    position: relative; 
     background: #fff;
     border-radius: 10px;
-    overflow: hidden; /* Oculta cualquier parte de las imágenes que se salga */
+    overflow: hidden; 
     box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-    /* Define una altura fija o un padding-bottom para mantener la proporción
-       sin que el contenido se colapse cuando todas las imágenes estén absolute. */
-    aspect-ratio: 16 / 8; /* Define una proporción fija (ej. 16:8). Puedes ajustar esto. */
-    max-width: 1200px; /* Asegura que el carrusel no sea demasiado ancho */
-    margin: 0 auto; /* Centra el carrusel */
+    aspect-ratio: 16 / 8; 
+    max-width: 1200px; 
+    margin: 0 auto; 
 }
 
 .carrusel-container {
@@ -205,18 +196,18 @@ a {
 }
         
 .carrusel-slide {
-    position: absolute; /* Cada slide se posiciona absolutamente dentro de .carrusel-slides */
+    position: absolute; 
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    opacity: 0; /* Por defecto, todos los slides están ocultos */
-    transition: opacity 0.5s ease-in-out; /* Transición suave al mostrar/ocultar */
-    display: block; /* Mantenemos block para que ocupe espacio, pero la opacidad lo oculta */
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out; 
+    display: block; 
 }
 
 .carrusel-slide.is-active {
-    opacity: 1; /* Muestra el slide activo */
+    opacity: 1; 
 }
 
 .carrusel-slide:hover {
@@ -225,24 +216,24 @@ a {
 
 .carrusel-slide img {
     width: 100%;
-    height: 100%; /* La imagen ocupa el 100% de la altura y ancho del slide */
-    object-fit: cover; /* Rellena el espacio sin deformar la imagen, recortando si es necesario. */
+    height: 100%; 
+    object-fit: cover; 
     display: block;
 }
 
 .carrusel-dots {
-    position: absolute; /* Posiciona los puntos sobre el carrusel */
-    bottom: 15px; /* A 15px del borde inferior */
-    left: 50%; /* Centra horizontalmente */
-    transform: translateX(-50%); /* Ajuste fino para centrar */
+    position: absolute; 
+    bottom: 15px; 
+    left: 50%; 
+    transform: translateX(-50%); 
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
-    padding: 10px; /* Un poco de padding para que no se peguen */
-    background-color: rgba(0, 0, 0, 0.3); /* Fondo semitransparente para los puntos */
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.3); 
     border-radius: 20px;
-    z-index: 5; /* Asegura que estén por encima de las imágenes */
+    z-index: 5;
 }
 
 .carrusel-dot {
@@ -286,7 +277,12 @@ a {
     padding: 25px;
 }
 
-/* 8. Footer */
+.card-content img{
+    max-width: 100px;
+    max-height: auto;
+}
+
+/* Footer */
 footer {
     background-color: var(--color-texto);
     color: var(--color-acento);
@@ -295,7 +291,7 @@ footer {
     margin-top: 40px;
 }
 
-/* 9. Responsividad */
+/* Responsividad */
 @media (max-width: 768px) {
     h1 { font-size: 2.2em; }
     h2 { font-size: 1.8em; }
@@ -303,23 +299,23 @@ footer {
 }
 
 .branding {
-    display: flex;          /* ¡La clave! Pone los elementos hijos (logo y texto) en una fila */
-    align-items: center;    /* Alinea verticalmente el logo y el texto en el centro */
-    gap: 15px;              /* Crea un espacio de 15px entre el logo y el texto */
+    display: flex;          
+    align-items: center;    
+    gap: 15px;              
 }
 
 .branding .logo {
-    height: 50px;           /* Fija la altura del logo. El ancho se ajustará automáticamente */
-    width: auto;            /* Mantiene la proporción del logo */
+    height: 50px;          
+    width: auto;            
 }
 
 .brand-text h1 {
-    margin: 0;              /* Quita márgenes para un mejor alineamiento */
+    margin: 0;             
     font-size: 1.8em;
 }
 
 .brand-text p {
-    margin: 0;              /* Quita márgenes para un mejor alineamiento */
+    margin: 0;           
 }
 
 .brand-text h1 a {

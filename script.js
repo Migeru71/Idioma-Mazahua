@@ -23,16 +23,14 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentSlide = 0;
 
     const showSlide = (index) => {
-        // Oculta todos los slides y desactiva todos los puntos
         slides.forEach((slide, i) => {
             slide.classList.remove('is-active');
             dots[i].classList.remove('is-active');
         });
 
-        // Muestra el slide actual y activa su punto correspondiente
         slides[index].classList.add('is-active');
         dots[index].classList.add('is-active');
-        currentSlide = index; // Actualiza el índice del slide actual
+        currentSlide = index; 
     };
 
     showSlide(currentSlide);
