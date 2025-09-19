@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión - Tsinani Mazahua</title>
-
     <link rel="stylesheet" href="style.css">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body class="login-body">
@@ -18,42 +16,47 @@
                 <p>Ingresa a la plataforma</p>
             </div>
 
-            <form id="loginForm" action="#">
-                <div class="roles">
-                    <button type="button" class="btn-rol active" data-rol="estudiante">
-                        <i class="fa-solid fa-user-graduate"></i> Estudiante
-                    </button>
-                    <button type="button" class="btn-rol" data-rol="profesor">
-                        <i class="fa-solid fa-chalkboard-user"></i> Profesor
-                    </button>
-                </div>
+            <div class="login-tabs">
+                <button type="button" id="tabEstudiante" class="tab-btn active">
+                    <i class="fa-solid fa-user-graduate"></i> Estudiante
+                </button>
+                <button type="button" id="tabProfesor" class="tab-btn">
+                    <i class="fa-solid fa-chalkboard-user"></i> Profesor
+                </button>
+            </div>
 
+            <form id="loginFormEstudiante" action="#">
                 <div class="input-group">
-                    <label for="email"><i class="fa-solid fa-envelope"></i> Correo Electrónico</label>
-                    <input type="email" id="email" name="email" required>
+                    <label for="emailEstudiante"><i class="fa-solid fa-envelope"></i> Correo Electrónico</label>
+                    <input type="email" id="emailEstudiante" name="email" required autocomplete="email">
                 </div>
-
                 <div class="input-group">
-                    <label for="password"><i class="fa-solid fa-lock"></i> Contraseña</label>
-                    <input type="password" id="password" name="password" required>
+                    <label for="passwordEstudiante"><i class="fa-solid fa-lock"></i> Contraseña</label>
+                    <input type="password" id="passwordEstudiante" name="password" required autocomplete="current-password">
                 </div>
-                
-                <div class="opciones-extra">
-                    <label class="recordarme">
-                        <input type="checkbox" name="recordarme"> Recordarme
-                    </label>
-                    <a href="#" class="olvide-pass">¿Olvidaste tu contraseña?</a>
-                </div>
-
-                <p id="login-error" class="error-message"></p>
-                <button type="submit" class="btn-ingresar">Ingresar</button>
-
-                <div class="registro-link">
-                    <p>¿No tienes una cuenta? <a href="#">Regístrate aquí</a></p>
-                </div>
+                <p id="errorEstudiante" class="error-message"></p>
+                <button type="submit" class="btn-ingresar">Ingresar como Estudiante</button>
             </form>
+
+            <form id="loginFormProfesor" action="#" class="hidden">
+                <div class="input-group">
+                    <label for="emailProfesor"><i class="fa-solid fa-envelope"></i> Correo Electrónico</label>
+                    <input type="email" id="emailProfesor" name="email" required autocomplete="email">
+                </div>
+                <div class="input-group">
+                    <label for="passwordProfesor"><i class="fa-solid fa-lock"></i> Contraseña</label>
+                    <input type="password" id="passwordProfesor" name="password" required autocomplete="current-password">
+                </div>
+                <p id="errorProfesor" class="error-message"></p>
+                <button type="submit" class="btn-ingresar">Ingresar como Profesor</button>
+            </form>
+
+            <div class="opciones-extra">
+                <a href="#" class="olvide-pass">¿Olvidaste tu contraseña?</a>
+            </div>
         </div>
     </main>
-
+    
+    <script src="script.js"></script>
 </body>
 </html>

@@ -466,7 +466,7 @@ footer {
 }
 
 /* ======================================================
-   Estilos Adicionales para la Página de Login
+   Estilos para la Página de Login (Versión con Pestañas)
    ====================================================== */
 
 .login-body {
@@ -475,9 +475,6 @@ footer {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-}
-
-.login-container {
     padding: 20px;
 }
 
@@ -494,31 +491,44 @@ footer {
     text-align: center;
     margin-bottom: 25px;
 }
-.login-header h1 {
-    color: var(--color-plataforma-texto-oscuro);
-    margin-bottom: 5px;
-}
-.login-header p {
-    color: #6B7280;
-    margin: 0;
-}
 
-.login-box .roles {
-    margin-bottom: 25px;
+.login-header h1 { color: var(--color-plataforma-texto-oscuro); margin-bottom: 5px; }
+.login-header p { color: #6B7280; margin: 0; }
+
+/* Estilo de las pestañas */
+.login-tabs {
     display: flex;
+    margin-bottom: 25px;
     background-color: var(--color-plataforma-fondo);
-    border-radius: 30px;
+    border-radius: 10px;
     padding: 5px;
 }
 
-.login-box .btn-rol {
-    flex: 1; /* Ocupa el 50% del espacio */
+.tab-btn {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    background-color: transparent;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: bold;
+    color: #6B7280;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
 }
 
-.input-group {
-    margin-bottom: 20px;
+.tab-btn.active {
+    background-color: #ffffff;
+    color: var(--color-plataforma-primario);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
+/* Estilos de los formularios */
+.input-group { margin-bottom: 20px; }
 .input-group label {
     display: block;
     margin-bottom: 8px;
@@ -526,10 +536,7 @@ footer {
     color: var(--color-plataforma-texto-oscuro);
     font-size: 0.9em;
 }
-.input-group label i {
-    margin-right: 8px;
-    color: var(--color-plataforma-primario);
-}
+.input-group label i { margin-right: 8px; color: var(--color-plataforma-primario); }
 
 .input-group input {
     width: 100%;
@@ -537,7 +544,6 @@ footer {
     border: 1px solid #ddd;
     border-radius: 8px;
     box-sizing: border-box;
-    transition: border-color 0.3s ease;
 }
 
 .input-group input:focus {
@@ -545,60 +551,35 @@ footer {
     border-color: var(--color-plataforma-primario);
 }
 
-.opciones-extra {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.9em;
-    margin-bottom: 25px;
-}
-.opciones-extra .recordarme {
-    display: flex;
-    align-items: center;
-    font-weight: normal;
-    color: #6B7280;
-}
-.opciones-extra .recordarme input {
-    margin-right: 5px;
-}
-.opciones-extra .olvide-pass {
-    color: var(--color-plataforma-primario);
-    text-decoration: none;
-}
-.opciones-extra .olvide-pass:hover {
-    text-decoration: underline;
-}
-
 .btn-ingresar {
     width: 100%;
     padding: 15px;
     border: none;
     border-radius: 10px;
-    background-color: #4a47a3;
-    color: rgb(255, 255, 255);
+    background-color: blueviolet;
+    color: white;
     font-size: 1.1em;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
-.btn-ingresar:hover {
-    background-color: #4a47a3;
-}
+.btn-ingresar:hover { background-color: #4a47a3; }
 
-.registro-link {
+.opciones-extra {
     text-align: center;
     margin-top: 25px;
     font-size: 0.9em;
-    color: #6B7280;
 }
-.registro-link a {
-    color: var(--color-plataforma-primario);
-    font-weight: bold;
-}
+.opciones-extra a { color: var(--color-plataforma-primario); }
 
+/* Clase de utilidad para ocultar elementos */
+.hidden {
+    display: none;
+}
 .error-message {
-    color: #B85042; /* Rojo ocre de tu paleta */
+    color: #B85042;
     font-weight: bold;
     text-align: center;
     margin-bottom: 15px;
+    min-height: 1.2em; /* Evita que el layout salte al aparecer el error */
 }

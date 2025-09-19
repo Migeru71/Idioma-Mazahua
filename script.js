@@ -49,84 +49,70 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-// ======================================================
-// === LÓGICA PARA EL FORMULARIO DE LOGIN (VERSIÓN CON DEPURACIÓN) ========
-// ======================================================
-
-// --- Base de Datos Falsa (Usuarios Estáticos) ---
-const usuarios = [
-    {
-        email: 'alumno@correo.com',
-        password: '123',
-        rol: 'estudiante',
-        redirectTo: 'index.html'
-    },
-    {
-        email: 'maestro@correo.com',
-        password: '456',
-        rol: 'profesor',
-        redirectTo: 'panel-profesor.html'
-    }
-];
-
-const loginForm = document.getElementById('loginForm');
-
-if (loginForm) {
-    const rolButtons = document.querySelectorAll('.btn-rol');
-    const emailInput = document.getElementById('email');
-    const passwordInput = document.getElementById('password');
-    const errorElement = document.getElementById('login-error');
+ // ================================================================
+    // === NUEVA LÓGICA PARA LOGIN CON PESTAÑAS Y FORMULARIOS SEPARADOS
+    // ================================================================
     
-    let selectedRol = 'estudiante';
+    // --- Base de Datos Falsa ---
+    const usuarios = [
+        { email: 'alumno@correo.com', password: '123', rol: 'estudiante', redirectTo: 'index.html' },
+        { email: 'maestro@correo.com', password: '456', rol: 'profesor', redirectTo: 'panel-profesor.html' }
+    ];
 
-    rolButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            rolButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-            selectedRol = button.dataset.rol;
-        });
-    });
+    // --- Seleccionamos los elementos de las pestañas y formularios ---
+    const tabEstudiante = document.getElementById('tabEstudiante');
+    const tabProfesor = document.getElementById('tabProfesor');
+    const formEstudiante = document.getElementById('loginFormEstudiante');
+    const formProfesor = document.getElementById('loginFormProfesor');
 
-    loginForm.addEventListener('submit', (event) => {
-        event.preventDefault();
-        
-        console.log("--- Intento de Login Iniciado ---"); // <-- NUEVO
+    // Verificamos que estamos en la página de login antes de ejecutar
+    if (tabEstudiante && tabProfesor && formEstudiante && formProfesor) {
 
-        const email = emailInput.value;
-        const password = passwordInput.value;
-
-        // MICRÓFONO 1: Vemos qué datos estamos intentando validar
-        console.log("Datos ingresados:", { 
-            correo: email, 
-            contrasena: password, 
-            rol: selectedRol 
+        // --- Lógica para cambiar de pestaña ---
+        tabEstudiante.addEventListener('click', () => {
+            tabEstudiante.classList.add('active');
+            tabProfesor.classList.remove('active');
+            formEstudiante.classList.remove('hidden');
+            formProfesor.classList.add('hidden');
         });
 
-        // MICRÓFONO 2: Vemos la "base de datos" que estamos usando
-        console.log("Buscando en la base de datos de usuarios:", usuarios);
+        tabProfesor.addEventListener('click', () => {
+            tabProfesor.classList.add('active');
+            tabEstudiante.classList.remove('active');
+            formProfesor.classList.remove('hidden');
+            formEstudiante.classList.add('hidden');
+        });
 
-        const usuarioEncontrado = usuarios.find(user => 
-            user.email === email && 
-            user.password === password && 
-            user.rol === selectedRol
-        );
-        
-        // MICRÓFONO 3: Vemos el resultado de la búsqueda
-        console.log("Resultado de la búsqueda (usuarioEncontrado):", usuarioEncontrado);
+        // --- Lógica para el formulario del Estudiante ---
+        formEstudiante.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const email = document.getElementById('emailEstudiante').value;
+            const password = document.getElementById('passwordEstudiante').value;
+            const errorElement = document.getElementById('errorEstudiante');
+            
+            const usuario = usuarios.find(u => u.email === email && u.password === password && u.rol === 'estudiante');
 
-        if (usuarioEncontrado) {
-            // MICRÓFONO 4: Confirmamos que la validación fue exitosa
-            console.log("✅ ¡Éxito! Usuario encontrado. Redirigiendo a:", usuarioEncontrado.redirectTo);
-            errorElement.textContent = '';
-            alert(`¡Bienvenido! Redirigiendo...`);
-            window.location.href = usuarioEncontrado.redirectTo;
-        } else {
-            // MICRÓFONO 5: Confirmamos que la validación falló
-            console.log("❌ Fallo: No se encontró un usuario con esos datos.");
-            errorElement.textContent = 'Correo, contraseña o rol incorrectos.';
-        }
+            if (usuario) {
+                window.location.href = usuario.redirectTo;
+            } else {
+                errorElement.textContent = 'Correo o contraseña incorrectos.';
+            }
+        });
 
-        console.log("--- Fin del Intento de Login ---");
-    });
-}
+        // --- Lógica para el formulario del Profesor ---
+        formProfesor.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const email = document.getElementById('emailProfesor').value;
+            const password = document.getElementById('passwordProfesor').value;
+            const errorElement = document.getElementById('errorProfesor');
+
+            const usuario = usuarios.find(u => u.email === email && u.password === password && u.rol === 'profesor');
+
+            if (usuario) {
+                window.location.href = usuario.redirectTo;
+            } else {
+                errorElement.textContent = 'Correo o contraseña incorrectos.';
+            }
+        });
+    }
 });
