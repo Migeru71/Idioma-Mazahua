@@ -322,3 +322,283 @@ footer {
     color: #2c3e50;
     text-decoration: none;
 }
+
+/* ======================================================
+   Estilos Adicionales para la Página de Progreso
+   ====================================================== */
+
+/* --- Tarjeta de Cabecera de Progreso --- */
+.progreso-header {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    padding: 25px;
+    border-left-color: var(--color-primario);
+}
+.progreso-header .avatar {
+    font-size: 4em;
+    color: var(--color-primario);
+    background-color: var(--color-acento);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.progreso-header .resumen-info {
+    flex: 1;
+}
+.progreso-header h3 {
+    margin: 0;
+}
+.progreso-header p {
+    margin: 5px 0 15px;
+    color: var(--color-texto);
+    font-size: 1.1em;
+}
+.progreso-header .nivel-progreso {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+}
+
+/* --- Barra de Progreso Genérica --- */
+.progress-bar {
+    flex: 1;
+    background-color: var(--color-acento);
+    border-radius: 20px;
+    height: 18px;
+    overflow: hidden;
+}
+.progress-bar-fill {
+    height: 100%;
+    background-color: var(--color-enlace);
+    border-radius: 20px;
+    transition: width 0.5s ease;
+}
+
+/* --- Sección de Competencias --- */
+.grid-competencias {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+.competencia-item {
+    padding: 20px;
+    border-left-color: var(--color-secundario);
+}
+.competencia-item h4 {
+    margin: 0 0 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.competencia-item .progress-bar {
+    height: 12px;
+}
+.competencia-item .progress-bar + span {
+    font-weight: bold;
+    font-family: var(--fuente-titulos);
+    color: var(--color-enlace);
+}
+
+
+/* --- Grid para Estadísticas y Logros --- */
+.grid-stats-logros {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+/* --- Tarjetas de Estadísticas --- */
+.stat-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 25px;
+    border-left-color: var(--color-enlace);
+}
+.stat-card .fa-solid {
+    font-size: 2.5em;
+    color: var(--color-enlace);
+}
+.stat-card .stat-number {
+    font-size: 2.5em;
+    font-weight: bold;
+    font-family: var(--fuente-titulos);
+}
+.stat-card .stat-label {
+    font-size: 1em;
+    color: #6c757d;
+}
+
+/* --- Logros Desbloqueados --- */
+.progreso-logros h2 {
+    text-align: left;
+}
+.grid-logros {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+.logro-badge {
+    font-size: 2.5em;
+    color: #ffd700; /* Color dorado */
+    background-color: var(--color-acento);
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+.logro-badge:hover {
+    transform: scale(1.1);
+}
+.logro-badge.locked {
+    color: var(--color-secundario);
+    background-color: #f0f0f0;
+}
+
+/* ======================================================
+   Estilos Adicionales para la Página de Login
+   ====================================================== */
+
+.login-body {
+    background-color: var(--color-plataforma-fondo);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.login-container {
+    padding: 20px;
+}
+
+.login-box {
+    width: 100%;
+    max-width: 450px;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+.login-header h1 {
+    color: var(--color-plataforma-texto-oscuro);
+    margin-bottom: 5px;
+}
+.login-header p {
+    color: #6B7280;
+    margin: 0;
+}
+
+.login-box .roles {
+    margin-bottom: 25px;
+    display: flex;
+    background-color: var(--color-plataforma-fondo);
+    border-radius: 30px;
+    padding: 5px;
+}
+
+.login-box .btn-rol {
+    flex: 1; /* Ocupa el 50% del espacio */
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--color-plataforma-texto-oscuro);
+    font-size: 0.9em;
+}
+.input-group label i {
+    margin-right: 8px;
+    color: var(--color-plataforma-primario);
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--color-plataforma-primario);
+}
+
+.opciones-extra {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9em;
+    margin-bottom: 25px;
+}
+.opciones-extra .recordarme {
+    display: flex;
+    align-items: center;
+    font-weight: normal;
+    color: #6B7280;
+}
+.opciones-extra .recordarme input {
+    margin-right: 5px;
+}
+.opciones-extra .olvide-pass {
+    color: var(--color-plataforma-primario);
+    text-decoration: none;
+}
+.opciones-extra .olvide-pass:hover {
+    text-decoration: underline;
+}
+
+.btn-ingresar {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background-color: #4a47a3;
+    color: rgb(255, 255, 255);
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.btn-ingresar:hover {
+    background-color: #4a47a3;
+}
+
+.registro-link {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 0.9em;
+    color: #6B7280;
+}
+.registro-link a {
+    color: var(--color-plataforma-primario);
+    font-weight: bold;
+}
+
+.error-message {
+    color: #B85042; /* Rojo ocre de tu paleta */
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px;
+}

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Progreso - Tsinani Mazahua</title>
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menú">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <a href="/perfil" class="perfil-link" aria-label="Ver perfil">
+            <i class="fa-solid fa-user"></i>
+        </a>
+    </header>
+
+    <nav id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <span class="logo">Jñatrjo Jñatjo</span>
+            <button id="menu-close" aria-label="Cerrar menú">&times;</button>
+        </div>
+        <ul class="sidebar-nav">
+            <li><a href="#"><i class="fa-solid fa-house"></i> Inicio</a></li>
+            <li><a href="#"><i class="fa-solid fa-user"></i> Perfil</a></li>
+            <li><a href="#"><i class="fa-solid fa-palette"></i> Artesanías</a></li>
+            <li><a href="#"><i class="fa-solid fa-utensils"></i> Gastronomía</a></li>
+            <li><a href="#"><i class="fa-solid fa-book-open"></i> Lengua Mazahua</a></li>
+        </ul>
+    </nav>
+    <div id="overlay" class="overlay"></div>
+
+    <main class="container">
+        <h1>Mi Progreso</h1>
+
+        <section class="progreso-header card">
+            <div class="avatar">
+                <i class="fa-solid fa-user-graduate"></i>
+            </div>
+            <div class="resumen-info">
+                <h3>María García López</h3>
+                <p>Nivel: Intermedio | Puntos Totales: 1,250</p>
+                <div class="nivel-progreso">
+                    <span>Progreso General</span>
+                    <div class="progress-bar">
+                        <div class="progress-bar-fill" style="width: 78%;"></div>
+                    </div>
+                    <span>78%</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="progreso-competencias">
+            <h2>Análisis de Competencias por Área</h2>
+            <div class="grid-competencias">
+                <div class="competencia-item card">
+                    <h4><i class="fa-solid fa-comment-dots"></i> Expresión Oral</h4>
+                    <div class="progress-bar">
+                        <div class="progress-bar-fill" style="width: 85%;"></div>
+                    </div>
+                    <span>85%</span>
+                </div>
+                <div class="competencia-item card">
+                    <h4><i class="fa-solid fa-ear-listen"></i> Comprensión Auditiva</h4>
+                    <div class="progress-bar">
+                        <div class="progress-bar-fill" style="width: 92%;"></div>
+                    </div>
+                    <span>92%</span>
+                </div>
+                <div class="competencia-item card">
+                    <h4><i class="fa-solid fa-book"></i> Vocabulario</h4>
+                    <div class="progress-bar">
+                        <div class="progress-bar-fill" style="width: 75%;"></div>
+                    </div>
+                    <span>75%</span>
+                </div>
+                <div class="competencia-item card">
+                    <h4><i class="fa-solid fa-feather-pen"></i> Escritura Básica</h4>
+                    <div class="progress-bar">
+                        <div class="progress-bar-fill" style="width: 60%;"></div>
+                    </div>
+                    <span>60%</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="grid-stats-logros">
+            <div class="progreso-estadisticas">
+                <h2>Estadísticas de Actividad</h2>
+                <div class="stat-card card">
+                    <i class="fa-solid fa-clock"></i>
+                    <span class="stat-number">24</span>
+                    <span class="stat-label">Horas de Práctica</span>
+                </div>
+                <div class="stat-card card">
+                    <i class="fa-solid fa-list-check"></i>
+                    <span class="stat-number">156</span>
+                    <span class="stat-label">Actividades Completadas</span>
+                </div>
+            </div>
+            <div class="progreso-logros">
+                <h2>Logros Desbloqueados</h2>
+                <div class="grid-logros">
+                    <div class="logro-badge" title="Primeros Pasos (Completa tu primera actividad)"><i class="fa-solid fa-shoe-prints"></i></div>
+                    <div class="logro-badge" title="Maestro del Vocabulario (Completa más del 50% de actividades)"><i class="fa-solid fa-star"></i></div>
+                    <div class="logro-badge" title="Cantante Mazahua (Escucha tu primera cancion)"><i class="fa-solid fa-music"></i></div>
+                    <div class="logro-badge locked" title="Logro Bloqueado (Sigue participando para desbloquear más logros)"><i class="fa-solid fa-lock"></i></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Tsinani Mazahua. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
