@@ -1,4 +1,5 @@
 [[redirects]]
-  from = "/*"
+  from = "/"
   to = "/login.html"
-  status = 200
+  status = 301 # <-- Esto es una REDIRECCIÓN, cambiará la URL en el navegador
+  force = true # Asegura que se aplique incluso si hay un index.html
