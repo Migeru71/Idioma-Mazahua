@@ -4,8 +4,9 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Montserrat:wght@400;500&display=swap');
 
+/* Primer paleta de colores
 :root {
-    --color-primario: #B85042;  
+    --color-primario: #fb04fb;  
     --color-secundario: #A7998B; 
     --color-acento: #E7E8D1;    
     --color-fondo: #F4F1DE;     
@@ -13,6 +14,19 @@
     --color-enlace: #547980;    
 
     --fuente-titulos: 'Lora', serif;
+    --fuente-cuerpo: 'Montserrat', sans-serif;
+}
+*/
+
+:root {
+    --color-primario: #fb04fb;      
+    --color-secundario: #4A0D67;    
+    --color-acento: #E9D5FF;    
+    --color-fondo: #F8F9FA;   
+    --color-texto: #212529;      
+    --color-enlace: #4A0D67;     
+
+    --fuente-titulos: 'Poppins', serif;
     --fuente-cuerpo: 'Montserrat', sans-serif;
 }
 
@@ -132,7 +146,7 @@ main {
     visibility: visible;
 }
 
-/* 6. Tipografía */
+/* Tipografía */
 h1, h2, h3 {
     font-family: var(--fuente-titulos);
     color: var(--color-primario);
@@ -563,6 +577,7 @@ footer {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
+
 .btn-ingresar:hover { background-color: #4a47a3; }
 
 .opciones-extra {
@@ -576,10 +591,51 @@ footer {
 .hidden {
     display: none;
 }
+
 .error-message {
     color: #B85042;
     font-weight: bold;
     text-align: center;
     margin-bottom: 15px;
-    min-height: 1.2em; /* Evita que el layout salte al aparecer el error */
+    min-height: 1.2em; 
+}
+
+/* --- Estilos para el login de estudiante con 3 cajas --- */
+.student-code-group {
+    display: flex;
+    align-items: center;
+    gap: 8px; 
+}
+
+.student-code-group input,
+.student-code-group select {
+    margin-bottom: 0; 
+}
+
+.student-code-group input[type="text"] {
+    flex: 3; 
+}
+
+.student-code-group input[type="number"],
+.student-code-group select {
+    flex: 1; 
+}
+
+.student-code-group .separator {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--color-plataforma-texto-oscuro);
+}
+
+/* ======================================================
+   Estilos para el Iframe de Juegos
+   ====================================================== */
+
+.iframe-wrapper {
+    text-align: center;
+}
+
+.iframe-wrapper iframe {
+    max-width: 100%; 
+    border-radius: 8px; 
 }

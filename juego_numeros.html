@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Números - Tsinani Mazahua</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menú">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <a href="/perfil" class="perfil-link" aria-label="Ver perfil">
+            <i class="fa-solid fa-user"></i>
+        </a>
+    </header>
+
+    <nav id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <span class="logo">Jñatrjo Jñatjo</span>
+            <button id="menu-close" aria-label="Cerrar menú">&times;</button>
+        </div>
+        <ul class="sidebar-nav">
+            <li><a href="index.html"><i class="fa-solid fa-house"></i> Inicio</a></li>
+            <li><a href="index.html"><i class="fa-solid fa-user"></i> Perfil</a></li>
+            <li><a href="#"><i class="fa-solid fa-book-open"></i> Lengua Mazahua</a></li>
+        </ul>
+    </nav>
+    <div id="overlay" class="overlay"></div>
+
+    <main class="container">
+        <h1>Aprende los Números en Mazahua</h1>
+
+        <section class="juego-numeros-intro card">
+            <p>¡Bienvenido al juego de números! Aquí podrás practicar y aprender los números del 1 al 10 en Mazahua. Escucha la pronunciación y selecciona la opción correcta.</p>
+        </section>
+
+        <section
+        <section class="juego-container card">
+            <h2>Juego Interactivo</h2>
+            <p>Arrastra cada número a su nombre correspondiente en Mazahua.</p>
+            <div class="iframe-wrapper">
+                <iframe src="https://wordwall.net/es/embed/60e3aa9cf0a0416f9fcfc89b7fca4308?themeId=66&templateId=30&fontStackId=0" width="800" height="600" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Tsinani Mazahua. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

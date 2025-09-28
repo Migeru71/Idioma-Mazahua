@@ -30,23 +30,41 @@ document.addEventListener('DOMContentLoaded', () => {
     const carouselSlides = document.querySelectorAll('.carrusel-slide');
     const carouselDots = document.querySelectorAll('.carrusel-dot');
 
+    // Solo ejecuta la lógica si existen carruseles en la página
     if (carouselSlides.length > 0 && carouselDots.length > 0) {
         let currentSlide = 0;
+
         const showSlide = (index) => {
+            // Se asegura de que el índice esté dentro de los límites
+            if (index >= carouselSlides.length) {
+                index = 0;
+            } else if (index < 0) {
+                index = carouselSlides.length - 1;
+            }
+
             carouselSlides.forEach(slide => slide.classList.remove('is-active'));
             carouselDots.forEach(dot => dot.classList.remove('is-active'));
+            
             carouselSlides[index].classList.add('is-active');
             carouselDots[index].classList.add('is-active');
+            
             currentSlide = index;
         };
 
+        // Permite que los puntos funcionen al hacer clic
         carouselDots.forEach((dot, index) => {
-            dot.addEventListener('click', () => showSlide(index));
+            dot.addEventListener('click', () => {
+                showSlide(index);
+            });
         });
+        
+        // ¡LA CLAVE! Activa el movimiento automático
+        setInterval(() => {
+            showSlide(currentSlide + 1);
+        }, 5000); // Cambia de imagen cada 5000 milisegundos (5 segundos)
 
-        if(carouselSlides.length > 0) {
-            showSlide(0);
-        }
+        // Muestra el primer slide al cargar la página
+        showSlide(0);
     }
 
  // ================================================================
@@ -55,8 +73,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // --- Base de Datos Falsa ---
     const usuarios = [
-        { email: 'alumno@correo.com', password: '123', rol: 'estudiante', redirectTo: 'index.html' },
-        { email: 'maestro@correo.com', password: '456', rol: 'profesor', redirectTo: 'panel-profesor.html' }
+        { rol: 'estudiante', nombre: 'miguel', numero: 101, grado: 3, nombreCompleto: 'Miguel', redirectTo: 'index.html' },
+        { email: 'maestro@correo.com', password: '456', rol: 'profesor', nombreCompleto: 'Prof. García', redirectTo: 'panel-profesor.html' }
     ];
 
     // --- Seleccionamos los elementos de las pestañas y formularios ---
@@ -68,7 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Verificamos que estamos en la página de login antes de ejecutar
     if (tabEstudiante && tabProfesor && formEstudiante && formProfesor) {
 
-        // --- Lógica para cambiar de pestaña ---
         tabEstudiante.addEventListener('click', () => {
             tabEstudiante.classList.add('active');
             tabProfesor.classList.remove('active');
@@ -83,23 +100,33 @@ document.addEventListener('DOMContentLoaded', () => {
             formEstudiante.classList.add('hidden');
         });
 
-        // --- Lógica para el formulario del Estudiante ---
+        // --- Lógica para el formulario del Estudiante (MODIFICADA) ---
         formEstudiante.addEventListener('submit', (event) => {
             event.preventDefault();
-            const email = document.getElementById('emailEstudiante').value;
-            const password = document.getElementById('passwordEstudiante').value;
+            // Obtenemos los valores de los tres campos
+            const nombreInput = document.getElementById('nombreEstudiante').value.toLowerCase().trim();
+            const numeroInput = parseInt(document.getElementById('numeroEstudiante').value, 10);
+            const gradoInput = parseInt(document.getElementById('gradoEstudiante').value, 10);
+            
             const errorElement = document.getElementById('errorEstudiante');
             
-            const usuario = usuarios.find(u => u.email === email && u.password === password && u.rol === 'estudiante');
+            // Busca un usuario que coincida con los TRES datos
+            const usuario = usuarios.find(u => 
+                u.rol === 'estudiante' &&
+                u.nombre === nombreInput &&
+                u.numero === numeroInput &&
+                u.grado === gradoInput
+            );
 
             if (usuario) {
+                alert(`¡Ximhai (Hola), ${usuario.nombreCompleto}!`);
                 window.location.href = usuario.redirectTo;
             } else {
-                errorElement.textContent = 'Correo o contraseña incorrectos.';
+                errorElement.textContent = 'Los datos son incorrectos. Pide ayuda a tu maestro.';
             }
         });
 
-        // --- Lógica para el formulario del Profesor ---
+        // --- Lógica para el formulario del Profesor (SIN CAMBIOS) ---
         formProfesor.addEventListener('submit', (event) => {
             event.preventDefault();
             const email = document.getElementById('emailProfesor').value;
@@ -109,6 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const usuario = usuarios.find(u => u.email === email && u.password === password && u.rol === 'profesor');
 
             if (usuario) {
+                alert(`¡Bienvenido, ${usuario.nombreCompleto}!`);
                 window.location.href = usuario.redirectTo;
             } else {
                 errorElement.textContent = 'Correo o contraseña incorrectos.';
