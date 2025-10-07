@@ -639,3 +639,43 @@ footer {
     max-width: 100%; 
     border-radius: 8px; 
 }
+
+/* --- Estilo para el enlace de "¿Ya tienes cuenta?" --- */
+.login-link {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 0.9em;
+    color: #6B7280;
+}
+
+.login-link a {
+    color: var(--color-plataforma-primario);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+.password-container {
+    position: relative;
+}
+
+.password-container input {
+    padding-right: 40px; 
+}
+
+.toggle-password {
+    position: absolute; 
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%); 
+    cursor: pointer;
+    color: var(--color-icono-inactivo);
+}
+
+.input-group input.is-invalid {
+    border-color: #B85042; 
+    box-shadow: 0 0 0 2px rgba(184, 80, 66, 0.2);
+}

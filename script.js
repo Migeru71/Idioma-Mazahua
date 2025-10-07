@@ -63,54 +63,68 @@ document.addEventListener('DOMContentLoaded', () => {
             showSlide(currentSlide + 1);
         }, 5000); // Cambia de imagen cada 5000 milisegundos (5 segundos)
 
-        // Muestra el primer slide al cargar la página
         showSlide(0);
     }
 
  // ================================================================
-    // === NUEVA LÓGICA PARA LOGIN CON PESTAÑAS Y FORMULARIOS SEPARADOS
+    // === LÓGICA PARA LOGIN CON PESTAÑAS Y FORMULARIOS SEPARADOS
     // ================================================================
     
     // --- Base de Datos Falsa ---
     const usuarios = [
         { rol: 'estudiante', nombre: 'miguel', numero: 101, grado: 3, nombreCompleto: 'Miguel', redirectTo: 'index.html' },
-        { email: 'maestro@correo.com', password: '456', rol: 'profesor', nombreCompleto: 'Prof. García', redirectTo: 'panel-profesor.html' }
+        { rol: 'profesor', email: 'maestro@correo.com', password: '456', rol: 'profesor', nombreCompleto: 'Prof. García', redirectTo: 'panel-profesor.html' },
+        { rol: 'invitado', email: 'invitado@correo.com', password: '789', nombreCompleto: 'Invitado', redirectTo: 'index.html?rol=invitado' }
     ];
 
-    // --- Seleccionamos los elementos de las pestañas y formularios ---
     const tabEstudiante = document.getElementById('tabEstudiante');
     const tabProfesor = document.getElementById('tabProfesor');
+    const tabInvitado = document.getElementById('tabInvitado'); 
     const formEstudiante = document.getElementById('loginFormEstudiante');
     const formProfesor = document.getElementById('loginFormProfesor');
+    const formInvitado = document.getElementById('loginFormInvitado'); 
 
-    // Verificamos que estamos en la página de login antes de ejecutar
     if (tabEstudiante && tabProfesor && formEstudiante && formProfesor) {
 
         tabEstudiante.addEventListener('click', () => {
             tabEstudiante.classList.add('active');
             tabProfesor.classList.remove('active');
+            tabInvitado.classList.remove('active');
+
             formEstudiante.classList.remove('hidden');
             formProfesor.classList.add('hidden');
+            formInvitado.classList.add('hidden');
         });
 
         tabProfesor.addEventListener('click', () => {
-            tabProfesor.classList.add('active');
             tabEstudiante.classList.remove('active');
-            formProfesor.classList.remove('hidden');
+            tabProfesor.classList.add('active');
+            tabInvitado.classList.remove('active');
+
             formEstudiante.classList.add('hidden');
+            formProfesor.classList.remove('hidden');
+            formInvitado.classList.add('hidden');
         });
 
-        // --- Lógica para el formulario del Estudiante (MODIFICADA) ---
+        tabInvitado.addEventListener('click', () => { 
+            tabEstudiante.classList.remove('active');
+            tabProfesor.classList.remove('active');
+            tabInvitado.classList.add('active');
+
+            formEstudiante.classList.add('hidden');
+            formProfesor.classList.add('hidden');
+            formInvitado.classList.remove('hidden');
+        });
+
+        // --- Lógica para el formulario del Estudiante ---
         formEstudiante.addEventListener('submit', (event) => {
             event.preventDefault();
-            // Obtenemos los valores de los tres campos
             const nombreInput = document.getElementById('nombreEstudiante').value.toLowerCase().trim();
             const numeroInput = parseInt(document.getElementById('numeroEstudiante').value, 10);
             const gradoInput = parseInt(document.getElementById('gradoEstudiante').value, 10);
             
             const errorElement = document.getElementById('errorEstudiante');
             
-            // Busca un usuario que coincida con los TRES datos
             const usuario = usuarios.find(u => 
                 u.rol === 'estudiante' &&
                 u.nombre === nombreInput &&
@@ -126,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // --- Lógica para el formulario del Profesor (SIN CAMBIOS) ---
+        // --- Lógica para el formulario del Profesor ---
         formProfesor.addEventListener('submit', (event) => {
             event.preventDefault();
             const email = document.getElementById('emailProfesor').value;
@@ -142,5 +156,72 @@ document.addEventListener('DOMContentLoaded', () => {
                 errorElement.textContent = 'Correo o contraseña incorrectos.';
             }
         });
+
+        formInvitado.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const email = document.getElementById('emailInvitado').value;
+            const password = document.getElementById('passwordInvitado').value;
+            const errorElement = document.getElementById('errorInvitado');
+
+            const usuario = usuarios.find(u => u.rol === 'invitado' && u.email === email && u.password === password);
+
+            if (usuario) {
+                window.location.href = usuario.redirectTo;
+            } else {
+                errorElement.textContent = 'Credenciales de invitado incorrectas.';
+            }
+        });
     }
+
+
+    // ================================================================
+    // === LÓGICA PARA MOSTRAR/OCULTAR CONTRASEÑA =====================
+    // ================================================================
+
+    const togglePasswordIcons = document.querySelectorAll('.toggle-password');
+
+    togglePasswordIcons.forEach(icon => {
+        icon.addEventListener('click', () => {
+            const container = icon.closest('.password-container');
+            const passwordInput = container.querySelector('input');
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        });
+    });
+
+    if (registrationForm) {
+        const passwordInput = document.getElementById('passwordRegistro');
+        const confirmPasswordInput = document.getElementById('confirmPassword');
+        const errorElement = document.getElementById('errorRegistro');
+
+        const validarContraseñas = () => {
+            if (passwordInput.value !== confirmPasswordInput.value && confirmPasswordInput.value !== '') {
+                errorElement.textContent = 'Las contraseñas no coinciden.';
+                confirmPasswordInput.classList.add('is-invalid');
+            } else {
+                errorElement.textContent = ''; 
+                confirmPasswordInput.classList.remove('is-invalid'); 
+            }
+        };
+
+        passwordInput.addEventListener('keyup', validarContraseñas);
+        confirmPasswordInput.addEventListener('keyup', validarContraseñas);
+
+        registrationForm.addEventListener('submit', (event) => {
+            if (passwordInput.value !== confirmPasswordInput.value) {
+                event.preventDefault();
+                errorElement.textContent = 'Por favor, asegúrate de que las contraseñas coincidan antes de registrarte.';
+                confirmPasswordInput.classList.add('is-invalid');
+            }
+        });
+    }
+
 });
