@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adivina la Palabra Mazahua</title>
+    <link rel="stylesheet" href="../Estilos/style_ahorcado.css">
+</head>
+<body>
+    <div class="game-container">
+        <div id="startScreen" class="start-screen">
+            <h1>🎯 Adivina la Palabra Mazahua 🎯</h1>
+            <p class="subtitle">Descubre el vocabulario de la lengua mazahua</p>
+            <button class="start-btn" onclick="startGame()">¡Comenzar a Adivinar!</button>
+            
+            <div class="instructions">
+                <h3>📝 Cómo jugar:</h3>
+                <ul>
+                    <li>Adivina la palabra oculta letra por letra.</li>
+                    <li>Tienes 6 intentos antes de que se complete el dibujo.</li>
+                    <li>Selecciona las letras usando el teclado en pantalla.</li>
+                    <li>¡Descubre la palabra antes de que sea tarde!</li>
+                </ul>
+            </div>
+            <br/>
+            <a href="../index.html" class="back-btn">Regresar al Menú</a>
+        </div>
+
+        <div id="gameScreen" class="hidden">
+            <div class="game-content">
+                <div class="hangman-container">
+                    <svg class="hangman-svg" viewBox="0 0 250 250">
+                        <line x1="10" y1="230" x2="100" y2="230" stroke="#333" stroke-width="4" stroke-linecap="round"/>
+                        <line x1="50" y1="230" x2="50" y2="20" stroke="#333" stroke-width="4" stroke-linecap="round"/>
+                        <line x1="50" y1="20" x2="150" y2="20" stroke="#333" stroke-width="4" stroke-linecap="round"/>
+                        <line x1="150" y1="20" x2="150" y2="50" stroke="#333" stroke-width="4" stroke-linecap="round"/>
+                        <circle id="head" cx="150" cy="70" r="20" stroke="#d63384" stroke-width="3" fill="none" style="display: none;"/>
+                        <line id="body" x1="150" y1="90" x2="150" y2="140" stroke="#d63384" stroke-width="3" stroke-linecap="round" style="display: none;"/>
+                        <line id="leftArm" x1="150" y1="110" x2="120" y2="130" stroke="#d63384" stroke-width="3" stroke-linecap="round" style="display: none;"/>
+                        <line id="rightArm" x1="150" y1="110" x2="180" y2="130" stroke="#d63384" stroke-width="3" stroke-linecap="round" style="display: none;"/>
+                        <line id="leftLeg" x1="150" y1="140" x2="120" y2="180" stroke="#d63384" stroke-width="3" stroke-linecap="round" style="display: none;"/>
+                        <line id="rightLeg" x1="150" y1="140" x2="180" y2="180" stroke="#d63384" stroke-width="3" stroke-linecap="round" style="display: none;"/>
+                    </svg>
+                </div>
+
+                <div class="game-info">
+                    <div class="attempts-container">
+                        <div>Intentos Restantes</div>
+                        <div class="attempts-number" id="attemptsLeft">6</div>
+                    </div>
+                    <div class="wrong-letters">
+                        <h3>❌ Letras Incorrectas</h3>
+                        <div class="wrong-letters-display" id="wrongLetters">-</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="word-display">
+                <div class="word-letters" id="wordDisplay"></div>
+            </div>
+
+            <div class="keyboard-container">
+                <div class="keyboard" id="keyboard"></div>
+            </div>
+        </div>
+
+        <div id="endScreen" class="end-screen hidden">
+            <h1 id="endTitle"></h1>
+            <p id="endMessage"></p>
+            <div class="word-reveal" id="wordReveal"></div>
+            <button class="restart-btn" onclick="startGame()">Jugar de Nuevo</button>
+            <br/><br/>
+            <a href="../index.html" class="back-btn">Regresar al Menú</a>
+        </div>
+    </div>
+
+    <script src="script_ahorcado.js"></script>
+</body>
+</html>

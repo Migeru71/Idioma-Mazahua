@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reto Numérico Mazahua</title>
+    <link rel="stylesheet" href="../Estilos/style_game_numbers.css">
+</head>
+<body>
+    <div class="game-container">
+        <!-- Pantalla de inicio -->
+        <div id="startScreen" class="start-screen">
+            <h1>🎮 Reto Numérico Mazahua 🎮</h1>
+            <p style="color: #666; margin: 20px 0; font-size: 1.1em;">
+                ¡Aprende los números del 1 al 10 en mazahua!
+            </p>
+            <button class="start-btn" onclick="startGame()">¡Comenzar Juego!</button>
+            
+            
+            <div class="instructions">
+                <h3>📝 Cómo jugar:</h3>
+                <ul>
+                    <li>Se mostrará un número del 1 al 10</li>
+                    <li>Selecciona la palabra correcta en mazahua</li>
+                    <li>Tienes 10 segundos por pregunta</li>
+                    <li>¡Gana puntos extra por responder rápido!</li>
+                    <li>100 puntos base + segundos restantes</li>
+                </ul>
+            </div>
+            <br/>
+            <a href="../index.html" class="back-btn">Regresar al Menú</a>
+        </div>
+
+        <!-- Pantalla del juego -->
+        <div id="gameScreen" class="hidden">
+            <div class="game-header">
+                <h1>Reto Numérico Mazahua</h1>
+            </div>
+
+            <div class="progress-bar">
+                <div id="progressFill" class="progress-fill" style="width: 0%"></div>
+            </div>
+
+            <div class="score-timer-container">
+                <div class="score-box">
+                    <div>Puntuación</div>
+                    <div id="score" style="font-size: 1.5em;">0</div>
+                </div>
+                <div id="timerBox" class="timer-box">
+                    <div>Tiempo</div>
+                    <div id="timer" style="font-size: 1.5em;">10</div>
+                </div>
+            </div>
+
+            <div class="question-container">
+                <div class="question-number" id="questionNumber">5</div>
+            </div>
+
+            <div class="options-container" id="optionsContainer">
+                <!-- Las opciones se generarán dinámicamente -->
+            </div>
+
+            <div style="text-align: center; color: #666;">
+                Pregunta <span id="currentQuestion">1</span> de 10
+            </div>
+        </div>
+
+        <!-- Pantalla final -->
+        <div id="endScreen" class="end-screen hidden">
+            <h1>🎉 ¡Juego Terminado! 🎉</h1>
+            <div class="final-score" id="finalScore">0</div>
+            <div class="score-message" id="scoreMessage"></div>
+            <button class="restart-btn" onclick="restartGame()">Jugar de Nuevo</button>
+            <br/><br/><br/>
+            <a href="../index.html" class="back-btn">Regresar al Menú</a>
+        </div>
+    </div>
+
+    <script src="script_numeros.js"></script>
+</body>
+</html>
